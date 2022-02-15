@@ -1,7 +1,7 @@
 {
 	"name": "MoveFiles",
 	"properties": {
-		"description": "Move files from one folder to another folder",
+		"description": "Move files from one folder to another folder\n\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal",
 		"activities": [
 			{
 				"name": "GetFileList",
@@ -208,16 +208,20 @@
 		],
 		"parameters": {
 			"SourceStore_Location": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original"
 			},
 			"SourceStore_Directory": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original"
 			},
 			"DestinationStore_Location": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
 			},
 			"DestinationStore_Directory": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
 			}
 		},
 		"annotations": []
