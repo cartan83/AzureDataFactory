@@ -1,0 +1,13 @@
+{
+	"name": "filestorageeastus2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal",
+			"userId": "filestorageeastus2",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEIyMEQ0QTYwLUQ0MEQtNDJDOS1BNjVCLUYwNkE0NjNCRjQwNl8wYmE4OTU4ZS0zNDQ1LTQzYmYtOTY3NS03NzllNjdhMmE3YTYiDQp9"
+		}
+	}
+}
