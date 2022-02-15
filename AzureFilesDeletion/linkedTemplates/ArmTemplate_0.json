@@ -221,7 +221,7 @@
 								}
 							},
 							"fieldList": [
-								"lastModified"
+								"childItems"
 							],
 							"storeSettings": {
 								"type": "FileServerReadSettings",
