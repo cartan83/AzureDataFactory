@@ -74,13 +74,13 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_Folder')]",
+			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "It describes the folder in the data source store.",
+				"description": "It describes the destination store.",
 				"linkedServiceName": {
-					"referenceName": "filestorageeastus1",
+					"referenceName": "filestorageeastus2",
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
@@ -89,6 +89,9 @@
 					},
 					"Directory": {
 						"type": "String"
+					},
+					"filename": {
+						"type": "string"
 					}
 				},
 				"annotations": [],
@@ -104,7 +107,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/filestorageeastus1')]"
+				"[concat(variables('factoryId'), '/linkedServices/filestorageeastus2')]"
 			]
 		},
 		{
@@ -149,13 +152,13 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination')]",
+			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_Folder')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "It describes the destination store.",
+				"description": "It describes the folder in the data source store.",
 				"linkedServiceName": {
-					"referenceName": "filestorageeastus2",
+					"referenceName": "filestorageeastus1",
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
@@ -164,9 +167,6 @@
 					},
 					"Directory": {
 						"type": "String"
-					},
-					"filename": {
-						"type": "string"
 					}
 				},
 				"annotations": [],
@@ -182,7 +182,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/filestorageeastus2')]"
+				"[concat(variables('factoryId'), '/linkedServices/filestorageeastus1')]"
 			]
 		},
 		{
@@ -221,11 +221,14 @@
 								}
 							},
 							"fieldList": [
-								"childItems"
+								"exists"
 							],
 							"storeSettings": {
 								"type": "FileServerReadSettings",
 								"recursive": true
+							},
+							"formatSettings": {
+								"type": "BinaryReadSettings"
 							}
 						}
 					},
