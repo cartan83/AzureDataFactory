@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "AzureFilesDeletion"
+		},
+		"filestorageeastus1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'filestorageeastus1'"
+		},
+		"filestorageeastus2_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'filestorageeastus2'"
+		},
+		"filestorageeastus1_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original\\"
+		},
+		"filestorageeastus1_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "filestorageeastus1"
+		},
+		"filestorageeastus2_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
+		},
+		"filestorageeastus2_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "filestorageeastus2"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "AzureFilesDeletion_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"filestorageeastus1_password": {
+						"value": "[parameters('filestorageeastus1_password')]"
+					},
+					"filestorageeastus2_password": {
+						"value": "[parameters('filestorageeastus2_password')]"
+					},
+					"filestorageeastus1_properties_typeProperties_host": {
+						"value": "[parameters('filestorageeastus1_properties_typeProperties_host')]"
+					},
+					"filestorageeastus1_properties_typeProperties_userId": {
+						"value": "[parameters('filestorageeastus1_properties_typeProperties_userId')]"
+					},
+					"filestorageeastus2_properties_typeProperties_host": {
+						"value": "[parameters('filestorageeastus2_properties_typeProperties_host')]"
+					},
+					"filestorageeastus2_properties_typeProperties_userId": {
+						"value": "[parameters('filestorageeastus2_properties_typeProperties_userId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

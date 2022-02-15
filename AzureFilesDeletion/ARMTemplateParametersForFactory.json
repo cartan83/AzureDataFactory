@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "AzureFilesDeletion"
+		},
+		"filestorageeastus1_password": {
+			"value": ""
+		},
+		"filestorageeastus2_password": {
+			"value": ""
+		},
+		"filestorageeastus1_properties_typeProperties_host": {
+			"value": "\\\\filestorageeastus1.file.core.windows.net\\original\\"
+		},
+		"filestorageeastus1_properties_typeProperties_userId": {
+			"value": "filestorageeastus1"
+		},
+		"filestorageeastus2_properties_typeProperties_host": {
+			"value": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
+		},
+		"filestorageeastus2_properties_typeProperties_userId": {
+			"value": "filestorageeastus2"
+		}
+	}
+}
