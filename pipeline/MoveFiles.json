@@ -32,7 +32,7 @@
 						}
 					},
 					"fieldList": [
-						"exists"
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "FileServerReadSettings",
