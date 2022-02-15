@@ -1,0 +1,25 @@
+{
+	"name": "Schedule-every2minutes",
+	"properties": {
+		"description": "runs every 2 minutes",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MoveFiles",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 2,
+				"startTime": "2022-02-15T21:36:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
