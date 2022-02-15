@@ -388,7 +388,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@activity('GetFileList').output.childItems",
+								"value": "@activity('GetFileList').output.lastModified",
 								"type": "Expression"
 							},
 							"condition": {
