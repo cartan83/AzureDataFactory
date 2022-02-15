@@ -212,19 +212,19 @@
 		"parameters": {
 			"SourceStore_Location": {
 				"type": "String",
-				"defaultValue": "https://filestorageeastus1.file.core.windows.net/original"
+				"defaultValue": "\\\\filestorageeastus1.file.core.windows.net/original"
 			},
 			"SourceStore_Directory": {
 				"type": "String",
-				"defaultValue": "https://filestorageeastus1.file.core.windows.net/original"
+				"defaultValue": "\\\\/filestorageeastus1.file.core.windows.net/original"
 			},
 			"DestinationStore_Location": {
 				"type": "String",
-				"defaultValue": "https://filestorageeastus2.file.core.windows.net/archiveoriginal/ArchivedFiles"
+				"defaultValue": "\\\\filestorageeastus2.file.core.windows.net/archiveoriginal/ArchivedFiles"
 			},
 			"DestinationStore_Directory": {
 				"type": "string",
-				"defaultValue": "https://filestorageeastus2.file.core.windows.net/archiveoriginal/ArchivedFiles"
+				"defaultValue": "\\\\filestorageeastus2.file.core.windows.net/archiveoriginal/ArchivedFiles"
 			}
 		},
 		"annotations": []
