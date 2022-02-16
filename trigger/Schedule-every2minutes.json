@@ -3,8 +3,21 @@
 	"properties": {
 		"description": "runs every 2 minutes",
 		"annotations": [],
-		"runtimeState": "Stopped",
-		"pipelines": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MoveFiles",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"SourceStore_Location": "\\\\filestorageeastus1.file.core.windows.net\\original",
+					"SourceStore_Directory": "Current",
+					"DestinationStore_Location": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal",
+					"DestinationStore_Directory": "ArchivedFiles"
+				}
+			}
+		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
