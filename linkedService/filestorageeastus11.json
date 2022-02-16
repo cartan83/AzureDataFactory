@@ -6,9 +6,9 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "\\\\filestorageeastus1.file.core.windows.net\\original",
+			"host": "\\\\filestorageeastus1.file.core.windows.net\\original\\Current",
 			"userId": "filestorageeastus1",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEIyMEQ0QTYwLUQ0MEQtNDJDOS1BNjVCLUYwNkE0NjNCRjQwNl9mZGU2ZmM3Ni04NWM5LTRkNjUtYTM4Mi0yYjM5MTNiYjNkNGYiDQp9"
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEIyMEQ0QTYwLUQ0MEQtNDJDOS1BNjVCLUYwNkE0NjNCRjQwNl8wMDY3NzA5OC00NmE5LTQ2MzUtODE2My1mZmU0OTcwYjA2ZTMiDQp9"
 		}
 	}
 }
