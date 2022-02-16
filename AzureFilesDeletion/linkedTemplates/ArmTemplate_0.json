@@ -30,6 +30,22 @@
 		"filestorageeastus2_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "filestorageeastus2"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Location": {
+			"type": "string",
+			"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Directory": {
+			"type": "string",
+			"defaultValue": "Current"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Location": {
+			"type": "string",
+			"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Directory": {
+			"type": "string",
+			"defaultValue": "ArchivedFiles"
 		}
 	},
 	"variables": {
@@ -67,27 +83,6 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('filestorageeastus2_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Schedule-every2minutes')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "runs every 2 minutes",
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 2,
-						"startTime": "2022-02-15T21:36:00Z",
-						"timeZone": "UTC"
 					}
 				}
 			},
@@ -246,6 +241,9 @@
 							"storeSettings": {
 								"type": "FileServerReadSettings",
 								"recursive": true
+							},
+							"formatSettings": {
+								"type": "BinaryReadSettings"
 							}
 						}
 					},
@@ -421,16 +419,20 @@
 				},
 				"parameters": {
 					"SourceStore_Location": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original"
 					},
 					"SourceStore_Directory": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "Current"
 					},
 					"DestinationStore_Location": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
 					},
 					"DestinationStore_Directory": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "ArchivedFiles"
 					}
 				},
 				"annotations": []
@@ -439,6 +441,42 @@
 				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_Folder')]",
 				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_File')]",
 				"[concat(variables('factoryId'), '/datasets/BinaryDataDestination')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Schedule-every2minutes')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "runs every 2 minutes",
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "MoveFiles",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"SourceStore_Location": "[parameters('Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Location')]",
+							"SourceStore_Directory": "[parameters('Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Directory')]",
+							"DestinationStore_Location": "[parameters('Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Location')]",
+							"DestinationStore_Directory": "[parameters('Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Directory')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 2,
+						"startTime": "2022-02-15T21:36:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/MoveFiles')]"
 			]
 		}
 	]

@@ -31,6 +31,22 @@
 			"type": "string",
 			"defaultValue": "filestorageeastus2"
 		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Location": {
+			"type": "string",
+			"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Directory": {
+			"type": "string",
+			"defaultValue": "Current"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Location": {
+			"type": "string",
+			"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Directory": {
+			"type": "string",
+			"defaultValue": "ArchivedFiles"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -75,6 +91,18 @@
 					},
 					"filestorageeastus2_properties_typeProperties_userId": {
 						"value": "[parameters('filestorageeastus2_properties_typeProperties_userId')]"
+					},
+					"Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Location": {
+						"value": "[parameters('Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Location')]"
+					},
+					"Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Directory": {
+						"value": "[parameters('Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Directory')]"
+					},
+					"Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Location": {
+						"value": "[parameters('Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Location')]"
+					},
+					"Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Directory": {
+						"value": "[parameters('Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Directory')]"
 					}
 				}
 			},

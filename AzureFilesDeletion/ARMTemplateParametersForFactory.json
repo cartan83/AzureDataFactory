@@ -22,6 +22,18 @@
 		},
 		"filestorageeastus2_properties_typeProperties_userId": {
 			"value": "filestorageeastus2"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Location": {
+			"value": "\\\\filestorageeastus1.file.core.windows.net\\original"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_SourceStore_Directory": {
+			"value": "Current"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Location": {
+			"value": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
+		},
+		"Schedule-every2minutes_properties_MoveFiles_parameters_DestinationStore_Directory": {
+			"value": "ArchivedFiles"
 		}
 	}
 }
