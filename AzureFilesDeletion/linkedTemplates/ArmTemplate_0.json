@@ -210,14 +210,8 @@
 								"referenceName": "BinaryDataSource_Folder",
 								"type": "DatasetReference",
 								"parameters": {
-									"FolderPath": {
-										"value": "@pipeline().parameters.SourceStore_Location",
-										"type": "Expression"
-									},
-									"Directory": {
-										"value": "@pipeline().parameters.SourceStore_Directory",
-										"type": "Expression"
-									}
+									"FolderPath": "\\\\filestorageeastus2.file.core.windows.net\\original",
+									"Directory": "\\\\filestorageeastus2.file.core.windows.net\\original"
 								}
 							},
 							"fieldList": [
@@ -404,15 +398,15 @@
 				},
 				"parameters": {
 					"SourceStore_Location": {
-						"type": "String",
+						"type": "string",
 						"defaultValue": "\\\\filestorageeastus1.file.core.windows.net/original"
 					},
 					"SourceStore_Directory": {
-						"type": "String",
+						"type": "string",
 						"defaultValue": "\\\\/filestorageeastus1.file.core.windows.net/original"
 					},
 					"DestinationStore_Location": {
-						"type": "String",
+						"type": "string",
 						"defaultValue": "\\\\filestorageeastus2.file.core.windows.net/archiveoriginal/ArchivedFiles"
 					},
 					"DestinationStore_Directory": {
