@@ -3,7 +3,7 @@
 	"properties": {
 		"description": "runs every 2 minutes",
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [
 			{
 				"pipelineReference": {
