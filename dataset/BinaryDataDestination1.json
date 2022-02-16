@@ -1,0 +1,32 @@
+{
+	"name": "BinaryDataDestination1",
+	"properties": {
+		"description": "It describes the destination store.",
+		"linkedServiceName": {
+			"referenceName": "lfilestorageeastus22",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FolderPath": {
+				"type": "String"
+			},
+			"Directory": {
+				"type": "String"
+			},
+			"filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"folderPath": {
+					"value": "@concat(dataset().FolderPath,'/',dataset().Directory)",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
