@@ -37,6 +37,9 @@
 					"storeSettings": {
 						"type": "FileServerReadSettings",
 						"recursive": true
+					},
+					"formatSettings": {
+						"type": "BinaryReadSettings"
 					}
 				}
 			},
