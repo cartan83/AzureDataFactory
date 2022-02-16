@@ -212,19 +212,19 @@
 		"parameters": {
 			"SourceStore_Location": {
 				"type": "String",
-				"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\"
+				"defaultValue": "Location"
 			},
 			"SourceStore_Directory": {
 				"type": "String",
-				"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\"
+				"defaultValue": "Directory"
 			},
 			"DestinationStore_Location": {
 				"type": "String",
-				"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\"
+				"defaultValue": "Location"
 			},
 			"DestinationStore_Directory": {
 				"type": "String",
-				"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\"
+				"defaultValue": "Directory"
 			}
 		},
 		"annotations": []
