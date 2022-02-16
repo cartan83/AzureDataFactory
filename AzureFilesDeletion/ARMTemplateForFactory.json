@@ -15,17 +15,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'filestorageeastus2'"
 		},
-		"filestorageeastus11_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'filestorageeastus11'"
-		},
-		"lfilestorageeastus22_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'lfilestorageeastus22'"
-		},
 		"filestorageeastus1_properties_typeProperties_host": {
 			"type": "string",
-			"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original\\"
+			"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original"
 		},
 		"filestorageeastus1_properties_typeProperties_userId": {
 			"type": "string",
@@ -38,22 +30,6 @@
 		"filestorageeastus2_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "filestorageeastus2"
-		},
-		"filestorageeastus11_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original"
-		},
-		"filestorageeastus11_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "filestorageeastus1"
-		},
-		"lfilestorageeastus22_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
-		},
-		"lfilestorageeastus22_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "filestorageeastus2"
 		}
 	},
 	"variables": {
@@ -61,215 +37,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/filestorageeastus1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "\\\\filestorageeastus1.file.core.windows.net\\original",
-				"annotations": [],
-				"type": "FileServer",
-				"typeProperties": {
-					"host": "[parameters('filestorageeastus1_properties_typeProperties_host')]",
-					"userId": "[parameters('filestorageeastus1_properties_typeProperties_userId')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('filestorageeastus1_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/filestorageeastus2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "FileServer",
-				"typeProperties": {
-					"host": "[parameters('filestorageeastus2_properties_typeProperties_host')]",
-					"userId": "[parameters('filestorageeastus2_properties_typeProperties_userId')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('filestorageeastus2_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Schedule-every2minutes')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "runs every 2 minutes",
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 2,
-						"startTime": "2022-02-15T21:36:00Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/filestorageeastus11')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "filestorageeastus1",
-				"annotations": [],
-				"type": "FileServer",
-				"typeProperties": {
-					"host": "[parameters('filestorageeastus11_properties_typeProperties_host')]",
-					"userId": "[parameters('filestorageeastus11_properties_typeProperties_userId')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('filestorageeastus11_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/lfilestorageeastus22')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "filestorageeastus2",
-				"annotations": [],
-				"type": "FileServer",
-				"typeProperties": {
-					"host": "[parameters('lfilestorageeastus22_properties_typeProperties_host')]",
-					"userId": "[parameters('lfilestorageeastus22_properties_typeProperties_userId')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('lfilestorageeastus22_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_Folder1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "It describes the folder in the data source store.",
-				"linkedServiceName": {
-					"referenceName": "filestorageeastus11",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"FolderPath": {
-						"type": "String"
-					},
-					"Directory": {
-						"type": "String"
-					}
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "FileServerLocation",
-						"folderPath": {
-							"value": "@concat(dataset().FolderPath,'/',dataset().Directory)",
-							"type": "Expression"
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/filestorageeastus11')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_File1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "It describes the file in the data source store.",
-				"linkedServiceName": {
-					"referenceName": "filestorageeastus11",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"FolderPath": {
-						"type": "String"
-					},
-					"Directory": {
-						"type": "String"
-					},
-					"filename": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "FileServerLocation",
-						"fileName": {
-							"value": "@dataset().filename",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "@concat(dataset().FolderPath,'/',dataset().Directory)",
-							"type": "Expression"
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/filestorageeastus11')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "It describes the destination store.",
-				"linkedServiceName": {
-					"referenceName": "lfilestorageeastus22",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"FolderPath": {
-						"type": "String"
-					},
-					"Directory": {
-						"type": "String"
-					},
-					"filename": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "FileServerLocation",
-						"folderPath": {
-							"value": "@concat(dataset().FolderPath,'/',dataset().Directory)",
-							"type": "Expression"
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/lfilestorageeastus22')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/MoveFiles-2')]",
+			"name": "[concat(parameters('factoryName'), '/MoveFiles')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -290,7 +58,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataset": {
-								"referenceName": "BinaryDataSource_Folder1",
+								"referenceName": "BinaryDataSource_Folder",
 								"type": "DatasetReference",
 								"parameters": {
 									"FolderPath": {
@@ -309,9 +77,6 @@
 							"storeSettings": {
 								"type": "FileServerReadSettings",
 								"recursive": true
-							},
-							"formatSettings": {
-								"type": "BinaryReadSettings"
 							}
 						}
 					},
@@ -368,7 +133,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "BinaryDataSource_File1",
+											"referenceName": "BinaryDataSource_File",
 											"type": "DatasetReference",
 											"parameters": {
 												"FolderPath": {
@@ -388,7 +153,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "BinaryDataDestination1",
+											"referenceName": "BinaryDataDestination",
 											"type": "DatasetReference",
 											"parameters": {
 												"FolderPath": {
@@ -429,7 +194,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"dataset": {
-											"referenceName": "BinaryDataSource_File1",
+											"referenceName": "BinaryDataSource_File",
 											"type": "DatasetReference",
 											"parameters": {
 												"FolderPath": {
@@ -487,29 +252,194 @@
 				},
 				"parameters": {
 					"SourceStore_Location": {
-						"type": "string",
-						"defaultValue": "\\\\filestorageeastus1.file.core.windows.net/original/Current"
+						"type": "String"
 					},
 					"SourceStore_Directory": {
-						"type": "string",
-						"defaultValue": "\\\\filestorageeastus1.file.core.windows.net/original/Current"
+						"type": "String"
 					},
 					"DestinationStore_Location": {
-						"type": "string",
-						"defaultValue": "\\\\filestorageeastus2.file.core.windows.net/archiveoriginal/ArchivedFiles"
+						"type": "String"
 					},
 					"DestinationStore_Directory": {
-						"type": "string",
-						"defaultValue": "\\\\filestorageeastus2.file.core.windows.net/archiveoriginal/ArchivedFiles"
+						"type": "String"
 					}
 				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_Folder1')]",
-				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_File1')]",
-				"[concat(variables('factoryId'), '/datasets/BinaryDataDestination1')]"
+				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_Folder')]",
+				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_File')]",
+				"[concat(variables('factoryId'), '/datasets/BinaryDataDestination')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "It describes the destination store.",
+				"linkedServiceName": {
+					"referenceName": "filestorageeastus2",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"FolderPath": {
+						"type": "String"
+					},
+					"Directory": {
+						"type": "String"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation",
+						"folderPath": {
+							"value": "@concat(dataset().FolderPath,'/',dataset().Directory)",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/filestorageeastus2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_File')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "It describes the file in the data source store.",
+				"linkedServiceName": {
+					"referenceName": "filestorageeastus1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"FolderPath": {
+						"type": "String"
+					},
+					"Directory": {
+						"type": "String"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@concat(dataset().FolderPath,'/',dataset().Directory)",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/filestorageeastus1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_Folder')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "It describes the folder in the data source store.",
+				"linkedServiceName": {
+					"referenceName": "filestorageeastus1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"FolderPath": {
+						"type": "String"
+					},
+					"Directory": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation",
+						"folderPath": {
+							"value": "@concat(dataset().FolderPath,'/',dataset().Directory)",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/filestorageeastus1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/filestorageeastus1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "[parameters('filestorageeastus1_properties_typeProperties_host')]",
+					"userId": "[parameters('filestorageeastus1_properties_typeProperties_userId')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('filestorageeastus1_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/filestorageeastus2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "[parameters('filestorageeastus2_properties_typeProperties_host')]",
+					"userId": "[parameters('filestorageeastus2_properties_typeProperties_userId')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('filestorageeastus2_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Schedule-every2minutes')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "runs every 2 minutes",
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 2,
+						"startTime": "2022-02-15T21:36:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }
