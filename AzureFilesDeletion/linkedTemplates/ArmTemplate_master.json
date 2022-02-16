@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'filestorageeastus2'"
 		},
+		"filestorageeastus11_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'filestorageeastus11'"
+		},
+		"lfilestorageeastus22_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'lfilestorageeastus22'"
+		},
 		"filestorageeastus1_properties_typeProperties_host": {
 			"type": "string",
 			"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original\\"
@@ -28,6 +36,22 @@
 			"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
 		},
 		"filestorageeastus2_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "filestorageeastus2"
+		},
+		"filestorageeastus11_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original"
+		},
+		"filestorageeastus11_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "filestorageeastus1"
+		},
+		"lfilestorageeastus22_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
+		},
+		"lfilestorageeastus22_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "filestorageeastus2"
 		},
@@ -64,6 +88,12 @@
 					"filestorageeastus2_password": {
 						"value": "[parameters('filestorageeastus2_password')]"
 					},
+					"filestorageeastus11_password": {
+						"value": "[parameters('filestorageeastus11_password')]"
+					},
+					"lfilestorageeastus22_password": {
+						"value": "[parameters('lfilestorageeastus22_password')]"
+					},
 					"filestorageeastus1_properties_typeProperties_host": {
 						"value": "[parameters('filestorageeastus1_properties_typeProperties_host')]"
 					},
@@ -75,6 +105,18 @@
 					},
 					"filestorageeastus2_properties_typeProperties_userId": {
 						"value": "[parameters('filestorageeastus2_properties_typeProperties_userId')]"
+					},
+					"filestorageeastus11_properties_typeProperties_host": {
+						"value": "[parameters('filestorageeastus11_properties_typeProperties_host')]"
+					},
+					"filestorageeastus11_properties_typeProperties_userId": {
+						"value": "[parameters('filestorageeastus11_properties_typeProperties_userId')]"
+					},
+					"lfilestorageeastus22_properties_typeProperties_host": {
+						"value": "[parameters('lfilestorageeastus22_properties_typeProperties_host')]"
+					},
+					"lfilestorageeastus22_properties_typeProperties_userId": {
+						"value": "[parameters('lfilestorageeastus22_properties_typeProperties_userId')]"
 					}
 				}
 			},

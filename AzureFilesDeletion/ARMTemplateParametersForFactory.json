@@ -11,6 +11,12 @@
 		"filestorageeastus2_password": {
 			"value": ""
 		},
+		"filestorageeastus11_password": {
+			"value": ""
+		},
+		"lfilestorageeastus22_password": {
+			"value": ""
+		},
 		"filestorageeastus1_properties_typeProperties_host": {
 			"value": "\\\\filestorageeastus1.file.core.windows.net\\original\\"
 		},
@@ -21,6 +27,18 @@
 			"value": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
 		},
 		"filestorageeastus2_properties_typeProperties_userId": {
+			"value": "filestorageeastus2"
+		},
+		"filestorageeastus11_properties_typeProperties_host": {
+			"value": "\\\\filestorageeastus1.file.core.windows.net\\original"
+		},
+		"filestorageeastus11_properties_typeProperties_userId": {
+			"value": "filestorageeastus1"
+		},
+		"lfilestorageeastus22_properties_typeProperties_host": {
+			"value": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal"
+		},
+		"lfilestorageeastus22_properties_typeProperties_userId": {
 			"value": "filestorageeastus2"
 		}
 	}
