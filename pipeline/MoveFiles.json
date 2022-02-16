@@ -216,7 +216,7 @@
 			},
 			"SourceStore_Directory": {
 				"type": "String",
-				"defaultValue": "\\\\filestorageeastus1.file.core.windows.net\\original\\Current"
+				"defaultValue": "Current"
 			},
 			"DestinationStore_Location": {
 				"type": "String",
@@ -224,7 +224,7 @@
 			},
 			"DestinationStore_Directory": {
 				"type": "String",
-				"defaultValue": "\\\\filestorageeastus2.file.core.windows.net\\archiveoriginal\\ArchivedFiles"
+				"defaultValue": "ArchivedFiles"
 			}
 		},
 		"annotations": []
